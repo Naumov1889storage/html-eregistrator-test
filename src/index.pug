@@ -1,0 +1,76 @@
+extends pug-components/layout
+
+block append title
+    -page = 'eRegistrator test task'
+
+block content
+    .main-section
+        .container.row.main-section__wrap
+            .main-section__sidebar.sidebar
+                span.main-section__text Блок левого меню
+            .main-section__content.content
+                .content__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias aliquid asperiores culpa cumque cupiditate deleniti dolorum eaque, esse eum ipsa itaque labore modi neque odit officia optio perspiciatis quam recusandae saepe sequi sit temporibus voluptas. Ab autem deserunt ipsam ipsum laborum repudiandae ut velit! Adipisci dolor id minus. Ab, accusamus aliquam, amet assumenda autem consequuntur distinctio dolores et eum eveniet exercitationem facere fugit in incidunt ipsam libero minima molestiae nesciunt, perspiciatis praesentium quia rerum sapiente similique sint sit totam voluptatibus. Aliquam amet deleniti deserunt dolor eum id optio sequi voluptas. Blanditiis culpa cupiditate distinctio dolore enim error ex hic, in iure nisi optio praesentium quaerat, quas, similique soluta tempore tenetur. Adipisci architecto aspernatur at deserunt dicta dolorum earum error ex facere, fugit in, labore laboriosam molestiae, nihil odio omnis optio quasi rerum veniam veritatis? A, alias animi consectetur culpa dolores earum, eos esse eum excepturi expedita explicabo facilis harum minima necessitatibus placeat possimus quam quidem recusandae rem, suscipit ut vel voluptate voluptates voluptatibus voluptatum. Architecto blanditiis commodi cupiditate dicta dignissimos, nam nulla porro praesentium sapiente voluptatem. Ab aliquam consequuntur dignissimos nulla odio reiciendis voluptatem voluptatum. Accusamus ad architecto aspernatur cum cupiditate debitis est et eveniet expedita, facere facilis harum impedit ipsa minus non odio perspiciatis qui quod repellat repudiandae, rerum similique sint velit. Accusantium aliquid consequuntur culpa maiores porro quasi repellendus sit! Adipisci, aliquid deleniti dignissimos magnam quae temporibus unde? Beatae commodi consectetur debitis facere itaque porro sint vel! Architecto at consequuntur cupiditate delectus dicta doloremque ea eaque eveniet hic labore minima natus nesciunt nihil obcaecati optio, perferendis perspiciatis qui quos repellendus repudiandae saepe sapiente vel vitae. Autem consectetur cum deleniti ducimus eaque earum error esse illo incidunt maxime minima modi necessitatibus nemo porro provident, quidem quis quod, quos rerum, sapiente sed sint sunt suscipit velit vero? Explicabo, ipsa?
+                form(class="eregistrator-block" name="eregistrator-block" onsubmit="return eregistrator_validate()")
+                    .eregistrator-block__item.eregistrator-block__item_required
+                        label(for="eregistrator-block__second-name" class="eregistrator-block__label") * Фамилия
+                        input(id="eregistrator-block__second-name" class="eregistrator-block__input" type="text" placeholder="Фамилия" name="eregistrator-block__second-name")
+                        span.eregistrator-block__reminder Обязательное поле
+                    .eregistrator-block__item.eregistrator-block__item_required
+                        label(for="eregistrator-block__first-name" class="eregistrator-block__label") * Имя
+                        input(id="eregistrator-block__first-name" class="eregistrator-block__input" type="text" placeholder="Имя" name="eregistrator-block__first-name")
+                        span.eregistrator-block__reminder Обязательное поле
+                    .eregistrator-block__item
+                        label(for="eregistrator-block__patronymic" class="eregistrator-block__label") Отчество
+                        input(id="eregistrator-block__patronymic" class="eregistrator-block__input" type="text" placeholder="Отчество" name="eregistrator-block__patronymic")
+                    button(class="eregistrator-block__btn" type="submit")
+                script.
+                    function eregistrator_validate() {
+                        let requiredItems = document.querySelectorAll('.eregistrator-block__item_required');
+                        let passed = true;
+
+                        for(let i=0; i<requiredItems.length; i++) {
+                            requiredInput = requiredItems[i].querySelector(".eregistrator-block__input");
+                            if(requiredInput.value === "") {
+                                requiredItems[i].classList.add("eregistrator-block__item_alert");
+                                passed = false
+                            } else {
+                                requiredItems[i].classList.remove("eregistrator-block__item_alert");
+                            }
+                        }
+
+                        if (passed === false) {
+                            return false
+                        }
+                    }
+
+                    function setEregistratorStyleOnWidth() {
+                        let eregistratorBlock = document.querySelector(".eregistrator-block");
+                        let eregistratorBlockWidth = eregistratorBlock.offsetWidth;
+                        if (eregistratorBlockWidth > 1599) {
+                            eregistratorBlock.classList.add("eregistrator-block_width_extra-large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_medium");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_small");
+                        } else if (eregistratorBlockWidth >= 1024 && eregistratorBlockWidth <= 1599) {
+                            eregistratorBlock.classList.remove("eregistrator-block_width_extra-large");
+                            eregistratorBlock.classList.add("eregistrator-block_width_large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_medium");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_small");
+                        } else if (eregistratorBlockWidth >= 640 && eregistratorBlockWidth <= 1023) {
+                            eregistratorBlock.classList.remove("eregistrator-block_width_extra-large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_large");
+                            eregistratorBlock.classList.add("eregistrator-block_width_medium");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_small");
+                        } else if (eregistratorBlockWidth <= 639) {
+                            eregistratorBlock.classList.remove("eregistrator-block_width_extra-large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_large");
+                            eregistratorBlock.classList.remove("eregistrator-block_width_medium");
+                            eregistratorBlock.classList.add("eregistrator-block_width_small");
+                        }
+                    }
+
+                    setEregistratorStyleOnWidth();
+
+                    window.addEventListener("resize", setEregistratorStyleOnWidth);
+
+                .content__text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aspernatur atque dolorum quam qui ullam ut. Ad aut autem beatae cupiditate dignissimos dolore doloribus dolorum eaque est eum facere fuga id illo ipsa ipsum laborum maxime molestias nemo nesciunt nihil non pariatur, quibusdam quis, quod reiciendis, sequi ut velit voluptatem voluptates voluptatibus. Consequuntur dolor dolore facilis ipsum, maxime omnis possimus quidem suscipit tempore. Accusamus aliquam amet ex iusto placeat praesentium quos recusandae veniam voluptas voluptate! Accusamus consequuntur eligendi enim esse exercitationem illum iure iusto modi nulla numquam placeat qui, quia totam veniam voluptas. Distinctio eos exercitationem magnam veniam? Accusantium aspernatur aut consequuntur corporis dolore dolorum enim et expedita harum incidunt iste iusto maiores minima molestias odio optio, porro quas saepe suscipit veniam. Alias aliquam aperiam autem culpa debitis deserunt dicta ea esse exercitationem facere fugit iste iure labore magnam minus natus nihil numquam optio pariatur porro praesentium provident quidem quo reiciendis repellendus saepe, sunt, unde. Accusantium consectetur corporis dolore ducimus tenetur. Aliquam atque consectetur cumque distinctio, ea earum eveniet explicabo ipsam iste magni, nihil provident, quae reprehenderit repudiandae vel. Eius, enim, eos! Adipisci aliquid aut blanditiis debitis doloribus eos et eveniet fugiat impedit ipsa itaque iure molestias, nobis officiis perspiciatis quasi quia quod sequi tempora temporibus, unde velit, voluptatum. Accusamus consequuntur cum cupiditate ducimus eaque excepturi expedita facere, id inventore magni molestias odio placeat, provident ratione, sapiente velit voluptatibus? Aliquid asperiores beatae delectus dolorem doloremque dolorum eaque enim esse facere facilis id illum ipsam nam natus neque nisi praesentium quae quam quasi quia, reiciendis repellat sed, sint voluptate voluptatem voluptatibus, voluptatum? Accusantium adipisci dignissimos dolores doloribus ea expedita fuga iure iusto laudantium minus natus nemo neque nesciunt nulla obcaecati optio possimus quisquam repellendus repudiandae rerum, sapiente soluta voluptatibus! Ab, animi placeat. Autem debitis delectus dolore doloremque dolores enim excepturi inventore ipsa magnam nemo nesciunt, nostrum praesentium qui rerum voluptatum. Accusamus ad, alias autem consequatur dolorum ducimus error esse et incidunt mollitia nisi odio officia possimus ut voluptatem? Aspernatur at aut corporis doloribus magni nostrum possimus quaerat! Asperiores quae quas tempore voluptate? Adipisci amet, architecto aspernatur at deleniti deserunt distinctio doloremque ea et facere laboriosam magnam magni nam obcaecati odit officiis omnis quae quasi quibusdam quis quo recusandae reprehenderit saepe temporibus, vel velit veritatis, voluptates? Aliquam molestias possimus quaerat quis similique sunt, tempora ullam vitae. Consequatur doloremque exercitationem expedita magni nisi officia officiis, optio possimus quae recusandae sapiente similique, sunt voluptate.

@@ -1,0 +1,31 @@
+doctype html
+html(lang="ru-Ru")
+    head
+        meta(charset = 'utf-8')
+        meta(name='viewport', content="initial-scale=1.0, width=device-width")
+        block title
+            -let title = "Naumov"
+            -let page = ''
+        title #{title + (page.length ? " - " : "") + (typeof page === 'string' ? page : page[page.length - 1])}
+        // стили страницы
+        link(rel="stylesheet" href="css/common.css")
+        link(rel="stylesheet" href="css/concat-css-libs.css")
+        // стили встраиваемого блока
+        link(rel="stylesheet" href="css/eregistrator-block.css")
+        //link(rel="stylesheet" href="css/eregistrator-block.css")
+        //link(rel="stylesheet" href="css/common.css")
+    body
+        block header
+            header.header
+                .container
+                    span.header__text Блок верхнего меню
+
+        block content
+
+        block footer
+            footer.footer
+                .container
+                    span.footer__text Блок нижнего меню
+
+        script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        script(src="js/common.js")

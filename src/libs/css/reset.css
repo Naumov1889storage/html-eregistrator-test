@@ -1,0 +1,40 @@
+html, body, div, span,
+h1, h2, h3, h4, h5, h6, p,  i, b,
+img, form, input, label, ol, ul, li, a, button {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none;
+	border: none;
+	text-decoration: none;
+	list-style: none;
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+ul {
+	font-size: 0;
+}
+li {
+	font-size: 16px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+button,
+label {
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+
+

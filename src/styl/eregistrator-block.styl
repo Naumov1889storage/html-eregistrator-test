@@ -1,0 +1,85 @@
+.eregistrator-block {
+  display: flex
+  flex-wrap: wrap
+  max-width: 100%
+  margin: 20px 0
+  padding-bottom: 20px
+  font-family: "Roboto"
+  border: 1px solid grey
+  &_width {
+    &_extra-large {
+      padding-left: 32px
+      padding-right: 32px
+      .eregistrator-block__item {
+        margin-left: 32px
+        width: 480px;
+        &:nth-child(1) {
+          margin-left: 0
+        }
+      }
+    }
+    &_large {
+      padding-left: 2%
+      padding-right: 4%
+      .eregistrator-block__item {
+        margin-left: 2%
+        width: 32%;
+        &:nth-child(1) {
+          margin-left: 0
+        }
+      }
+    }
+    &_medium {
+      padding-left: 4%
+      padding-right: 4%
+      .eregistrator-block__item {
+        margin-left: 4%
+        width: 48%;
+        &:nth-child(1) {
+          margin-left: 0
+        }
+        &:nth-child(3) {
+          margin-left: 0
+        }
+      }
+    }
+    &_small {
+      padding-right: 10%
+      padding-left: 10%
+      .eregistrator-block__item {
+        width: 100%;
+      }
+    }
+  }
+  &__item {
+    display: flex
+    flex-direction: column
+    margin-top: 20px
+    &_alert {
+      .eregistrator-block__input {
+        border-color: red
+      }
+      .eregistrator-block__reminder {
+        display: block
+        color: red
+      }
+    }
+  }
+  &__label {
+    font-size: 13px
+  }
+  &__input {
+    margin: 5px 0 5px 0
+    padding: 10px
+    font-size: 16px
+    border: 1px solid lightgrey
+  }
+  &__reminder {
+    display: none
+    font-size: 13px
+    font-weight: bold
+  }
+  &__btn {
+    display: none
+  }
+}
